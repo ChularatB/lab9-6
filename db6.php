@@ -16,16 +16,14 @@
     <?php
     $stmt = $pdo->prepare("SELECT * FROM member");
     $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        echo "ชื่อ: " . $row["name"] . "<br>";
-        echo "ที่อยู่ : " . $row["address"] . "<br>";
-        echo " เบอร์โทร: " . $row["mobile"] . "<br>";
-        echo " email: " . $row["email"] . "<br>";
-        echo "<a href='#' onclick='Delete(" . $row["username"] . ")'>ลบ</a>";
-
-        echo "<hr>\n";
-    }
-    ?>
+    while ($row = $stmt->fetch()) : ?>
+        ชื่อ: <?=$row["name"]?><br>
+        ที่อยู่ : <?=$row["address"]?><br>
+        เบอร์โทร: <?=$row["mobile"]?><br>
+        email: <?=$row["email"]?><br>
+        <a href='#' onclick='Delete("<?=$row["username"]?>")'>ลบ</a>
+        <hr>
+    <?php endwhile ?>
 </body>
 
 </html>
